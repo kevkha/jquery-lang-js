@@ -10,7 +10,7 @@ translations from a default language such as English to other languages.
 ## Features
 * Instant language switching - no page reload required
 * Automatic translation of dynamic sections of the page (e.g. loaded via AJAX or added via jQuery)
-* Language persistence across pages and reloads via cookie (requires jquery-cookie.js plugin)
+* Language persistence across pages and reloads via cookie (requires js-cookie.js plugin)
 * Supports regular expression search / replace for non-token-based translations
 * Supports changing image urls when language changes
 * Event hooks for custom processing
@@ -23,6 +23,9 @@ This plugin and all related code was created by Irrelon Software Limited, a U.K.
 http://uk.linkedin.com/pub/rob-evans/25/b94/8a5/
 
 # Changelog
+2015-11-18 - Version 2.8.1
+* Added package.json as per #52
+
 2015-01-09 - Version 2.8
 * Added support for changing images when the language changes
 
@@ -63,7 +66,7 @@ http://uk.linkedin.com/pub/rob-evans/25/b94/8a5/
 # How to use
 
 *If you want language selection to persist across pages automatically, please ensure you include the
-jquery-cookie plugin available from: https://github.com/carhartl/jquery-cookie on your page as well.*
+js-cookie plugin available from: https://github.com/js-cookie/js-cookie on your page as well.*
 
 Include the plugin script in your head tag.
 
@@ -72,8 +75,10 @@ Include the plugin script in your head tag.
 Add the following to your HTML page in either the head or body:
 
     <script type="text/javascript">
-    // Create language switcher instance and set default language to en
-	window.lang = new Lang('en');
+    // Create language switcher instance and set cookie token and default language to en
+	window.lang = new Lang('langCookie','en');
+	// Set cookie expiry and path
+	lang.cookie(365, '/');
     </script>
 
 # Loading Language Packs Dynamically (Recommended)
